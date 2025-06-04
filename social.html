@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social - Swiper Fvck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #000000;
+      color: #00ffd5;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      left: 1rem;
+      top: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #00ffd5;
+      border-radius: 2px;
+      transition: 0.4s;
+    }
+
+    /* NAV sebagai overlay fixed */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 50%;
+      background: rgba(17, 17, 17, 0.95);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      z-index: 1000;
+      padding: 2rem;
+    }
+
+    nav a {
+      color: #00ffd5;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00c7ab;
+    }
+
+    /* Blur efek saat menu terbuka */
+    .blur {
+      filter: blur(8px);
+      transition: filter .3s;
+    }
+
+    /* Tombol silang di pojok kanan atas */
+    .close-menu {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .close-menu:hover {
+      color: #00ffd5;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      padding: 0 15px;
+      animation: fadeIn 1.5s ease-in-out;
+      flex-grow: 1;
+    }
+
+    .contact-container h2 {
+      color: #00ffd5;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .whatsapp-btn {
+      background-color: #25d366;
+      color: black;
+      padding: 20px 10px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #25d366;
+      transform: translateY(-5px);
+    }
+
+    .whatsapp2-btn {
+      background-color: #25d366;
+      color: black;
+      padding: 20px 10px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .whatsapp2-btn:hover {
+      background-color: #25d366;
+      transform: translateY(-5px);
+    }
+
+.youtube-btn {
+      background-color: #FF0000;
+      color: black;
+      padding: 20px 5px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .youtube-btn:hover {
+      background-color: #FF0000;
+      transform: translateY(-5px);
+    }
+
+.source-btn {
+      background-color: #FF0000;
+      color: black;
+      padding: 20px 15px;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .source-btn:hover {
+      background-color: #FF0000;
+      transform: translateY(-5px);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-icons img {
+      width: 50px;
+      height: 50px;
+      transition: transform 0.3s;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.1);
+    }
+
+    .video-container {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    iframe {
+      width: 90%;
+      max-width: 1000px;
+      height: 562px; /* 16:9 ratio */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    footer {
+      background-color: #000000;
+      color: #00ffd5;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    SWIPER FVCK
+  </header>
+
+  <!-- menu overlay -->
+  <nav id="nav">
+    <div class="close-menu" onclick="toggleMenu()">×</div>
+    <a href="menu.html">Menu Utama</a>
+    <a href="produk.html">Produk</a>
+    <a href="info.html">About Me</a>
+  </nav>
+
+  <div class="contact-container">
+    <h2>Social Saya</h2>
+    <p>Kontak Saya Jika Anda Memiliki Pertanyaan:</p>
+
+    <a href="https://wa.me/6282115117899" class="whatsapp-btn" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" width="30" />
+      Hubungi Saya Di WhatsApp
+    </a>
+
+    <p>Jangan Lupa Join Saluran Saya Untuk Mendapatkan Informasi Seputar Script Bot WhatsApp, Fitur Bot WhatsApp, Testimoni Pembeli:</p>
+
+    <div class="social-icons">
+      <a href="https://whatsapp.com/channel/0029Vb5dUs07oQhjMXztZw2o" class="whatsapp2-btn" target="_blank">
+      <img src="https://files.catbox.moe/c91pk3.jpg" alt="WhatsApp Logo" width="25" />
+      Join Saluran Saya
+    </a>
+      
+<a href="https://whatsapp.com/channel/0029VbAawEIBPzjWGFeQOE0l" class="whatsapp2-btn" target="_blank">
+      <img src="https://files.catbox.moe/f0cd25.jpg" alt="YouTube Logo" width="25" />
+      Join Saluran Dark Angel
+    </a>
+  <footer>&copy;Swiper Fvck</footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      const main = document.querySelector('.contact-container');
+      const open = nav.style.display !== 'flex';
+      nav.style.display = open ? 'flex' : 'none';
+      main.classList.toggle('blur', open);
+    }
+    
+</script>
+</body>
+</html>
