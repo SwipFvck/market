@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pembayaran via WhatsApp</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      background: white;
+      max-width: 400px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .payment-buttons button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .dana { background-color: #007bff; }
+    .ovo { background-color: #5f259f; }
+    .gopay { background-color: #00a896; }
+    .qris { background-color: #ff4d4f; }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pilih Metode Pembayaran</h2>
+    <div class="payment-buttons">
+      <button class="dana" onclick="redirectToWA('Dana')">Bayar dengan Dana</button>
+      <button class="ovo" onclick="redirectToWA('OVO')">Bayar dengan OVO</button>
+      <button class="gopay" onclick="redirectToWA('GoPay')">Bayar dengan GoPay</button>
+      <button class="qris" onclick="redirectToWA('QRIS')">Bayar dengan QRIS</button>
+    </div>
+  </div>
+
+  <script>
+    function redirectToWA(method) {
+      const phoneNumber = "6281234567890"; // Ganti dengan nomor admin tujuan (format internasional)
+      const message = `Halo, saya ingin melakukan pembayaran via ${method}. Mohon informasi selengkapnya.`;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>
