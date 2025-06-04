@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background: #f0f2f5;
+      background: #000;
     }
 
     .container {
@@ -33,6 +33,13 @@
     select, .payments, button {
       width: 100%;
       margin-top: 10px;
+    }
+
+    nav a {
+      color: black;
+      margin-left: 3.6rem;
+      text-decoration: all;
+      font-weight: 500;
     }
 
     .payments label {
@@ -66,7 +73,12 @@
 <body>
   <div class="container">
     <h2>Marketplace Swiper Fvck</h2>
-
+     <nav>
+      <a href="menu.html"><strong>Beranda</strong></a>
+      <a href="info.html"><strong>Info</strong></a>
+      <a href="social.html"><strong>Social</strong></a>
+    </nav>
+    
     <label for="product">Pilih Produk:</label>
     <select id="product">
       <option value="Panel 1gb">Panel 1gb - Rp2.000</option>
@@ -96,7 +108,7 @@
     <div class="payments">
       <label><input type="radio" name="payment" value="dana" /> DANA</label>
       <label><input type="radio" name="payment" value="ovo" /> OVO</label>
-      <label><input type="radio" name="payment" value="gopay" /> GoPay</label>
+      <label><input type="radio" name="payment" value="gopay" /> GOPAY</label>
       <label><input type="radio" name="payment" value="qris" /> QRIS</label>
     </div>
 
