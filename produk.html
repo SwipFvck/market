@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout Pembayaran</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f0f2f5;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    select, .payments, button {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .payments label {
+      display: block;
+      background: #e9ecef;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .payments input {
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1ebe5b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Checkout Produk</h2>
+
+    <label for="product">Pilih Produk:</label>
+    <select id="product">
+      <option value="Paket A">Paket A - Rp10.000</option>
+      <option value="Paket B">Paket B - Rp20.000</option>
+      <option value="Paket C">Paket C - Rp30.000</option>
+    </select>
+
+    <label>Pilih Metode Pembayaran:</label>
+    <div class="payments">
+      <label><input type="radio" name="payment" value="DANA" /> DANA</label>
+      <label><input type="radio" name="payment" value="OVO" /> OVO</label>
+      <label><input type="radio" name="payment" value="GoPay" /> GoPay</label>
+      <label><input type="radio" name="payment" value="QRIS" /> QRIS</label>
+    </div>
+
+    <button onclick="submitToWhatsApp()">Bayar Sekarang</button>
+  </div>
+
+  <script>
+    function submitToWhatsApp() {
+      const product = document.getElementById("product").value;
+      const paymentMethods = document.getElementsByName("payment");
+      let selectedPayment = null;
+
+      for (let method of paymentMethods) {
+        if (method.checked) {
+          selectedPayment = method.value;
+          break;
+        }
+      }
+
+      if (!selectedPayment) {
+        alert("Silakan pilih metode pembayaran.");
+        return;
+      }
+
+      const phoneNumber = "6281234567890"; // Ganti dengan nomor WhatsApp Anda
+      const message = `Halo, saya ingin membeli *${product}* menggunakan metode pembayaran *${selectedPayment}*.`;
+
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
