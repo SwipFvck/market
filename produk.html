@@ -14,7 +14,7 @@
     .container {
       max-width: 400px;
       margin: auto;
-      background: #25D366;
+      background: #fff;
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -122,7 +122,7 @@
       }
 
       const phoneNumber = "6282115117899"; // Ganti dengan nomor WhatsApp Anda
-      const message = `${selectedPayment} bang gw pengen buy *${product}*.`;
+      const message = `${selectedPayment} bang gw pengen buy ${product}.`;
 
       const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(url, "_blank");
