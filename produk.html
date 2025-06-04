@@ -76,10 +76,10 @@
 
     <label>Pilih Metode Pembayaran:</label>
     <div class="payments">
-      <label><input type="radio" name="payment" value="DANA" /> DANA</label>
-      <label><input type="radio" name="payment" value="OVO" /> OVO</label>
-      <label><input type="radio" name="payment" value="GoPay" /> GoPay</label>
-      <label><input type="radio" name="payment" value="QRIS" /> QRIS</label>
+      <label><input type="radio" name="payment" value="dana" /> DANA</label>
+      <label><input type="radio" name="payment" value="ovo" /> OVO</label>
+      <label><input type="radio" name="payment" value="gopay" /> GoPay</label>
+      <label><input type="radio" name="payment" value="qris" /> QRIS</label>
     </div>
 
     <button onclick="submitToWhatsApp()">Bayar Sekarang</button>
@@ -103,8 +103,8 @@
         return;
       }
 
-      const phoneNumber = "6281234567890"; // Ganti dengan nomor WhatsApp Anda
-      const message = `Halo, saya ingin membeli *${product}* menggunakan metode pembayaran *${selectedPayment}*.`;
+      const phoneNumber = "6282115117899"; // Ganti dengan nomor WhatsApp Anda
+      const message = `${selectedPayment} bang gw pengen buy *${product}*.`;
 
       const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(url, "_blank");
