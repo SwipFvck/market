@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Marketplace</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+    }
+    .product, .payment-method {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+    .btn {
+      background-color: #25D366;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    .btn:hover {
+      background-color: #1ebe5d;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Mini Marketplace</h1>
+
+<div class="product">
+  <h3>Pilih Produk</h3>
+  <label><input type="radio" name="product" value="Kaos - Rp100.000"> Kaos - Rp100.000</label>
+  <label><input type="radio" name="product" value="Topi - Rp50.000"> Topi - Rp50.000</label>
+  <label><input type="radio" name="product" value="Jaket - Rp200.000"> Jaket - Rp200.000</label>
+</div>
+
+<div class="payment-method">
+  <h3>Pilih Metode Pembayaran</h3>
+  <label><input type="radio" name="payment" value="Dana"> Dana</label>
+  <label><input type="radio" name="payment" value="OVO"> OVO</label>
+  <label><input type="radio" name="payment" value="GoPay"> GoPay</label>
+  <label><input type="radio" name="payment" value="QRIS"> QRIS</label>
+</div>
+
+<button class="btn" onclick="checkout()">Checkout via WhatsApp</button>
+
+<script>
+  function checkout() {
+    const product = document.querySelector('input[name="product"]:checked');
+    const payment = document.querySelector('input[name="payment"]:checked');
+
+    if (!product || !payment) {
+      alert('Silakan pilih produk dan metode pembayaran.');
+      return;
+    }
+
+    const phone = "6281234567890"; // Ganti dengan nomor WhatsApp admin tanpa +, contoh: 62812xxxxxxx
+    const message = `Halo Admin, saya ingin membeli:\n\nProduk: ${product.value}\nMetode Pembayaran: ${payment.value}`;
+
+    const encodedMsg = encodeURIComponent(message);
+    const waLink = `https://wa.me/${phone}?text=${encodedMsg}`;
+    window.open(waLink, '_blank');
+  }
+</script>
+
+</body>
+</html>
