@@ -26,10 +26,93 @@
       color: white; border: none; border-radius: 8px; cursor: pointer;
     }
     button:hover { background-color: #218838; }
+    
+        .menu-toggle {
+      position: absolute;
+      left: 1rem;
+      top: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #00ffd5;
+      border-radius: 2px;
+      transition: 0.4s;
+    }
+
+    /* NAV sebagai overlay fixed */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 50%;
+      background: rgba(17, 17, 17, 0.95);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      z-index: 1000;
+      padding: 2rem;
+    }
+
+    nav a {
+      color: #00ffd5;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00c7ab;
+    }
+
+    /* Blur efek saat menu terbuka */
+    .blur {
+      filter: blur(8px);
+      transition: filter .3s;
+    }
+
+    /* Tombol silang di pojok kanan atas */
+    .close-menu {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .close-menu:hover {
+      color: #00ffd5;
+    }
+    
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- menu overlay -->
+  <nav id="nav">
+    <div class="close-menu" onclick="toggleMenu()">×</div>
+    <a href="menu.html">Menu</a>
+    <a href="social.html">Social</a>
+    <a href="info.html">Info Me</a>
+  </nav>
+    
     <h1>Marketplace SwiperFvck</h1>
 
    <div class="product-card" onclick="selectProduct(this, 'Panel 1GB - Rp2.000')">
@@ -195,6 +278,14 @@
       const encodedMessage = encodeURIComponent(message);
 
       window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    }
+    
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      const main = document.querySelector('.contact-container');
+      const open = nav.style.display !== 'flex';
+      nav.style.display = open ? 'flex' : 'none';
+      main.classList.toggle('blur', open);
     }
   </script>
 </body>
