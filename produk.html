@@ -1,42 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Mini Marketplace</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social - Swiper Fvck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      color: #fff;
-      margin: 20px;
-      padding: 15px;
-    }
-    
-    h1 {
-      color: #fff;
-      text-align: center;
-    }
-    .product, .payment-method {
-      background: white;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-    }
-    label {
-      display: block;
-      margin: 10px 0;
-    }
-    .btn {
-      background-color: #25D366;
-      color: white;
-      padding: 15px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      width: 100%;
-    }
-    .btn:hover {
-      background-color: #1ebe5d;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
     }
 
     header {
@@ -115,28 +91,96 @@
     .close-menu:hover {
       color: #00ffd5;
     }
+
+    iframe {
+      width: 90%;
+      max-width: 1000px;
+      height: 562px; /* 16:9 ratio */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    footer {
+      background-color: #000000;
+      color: #00ffd5;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    h1 {
+      color: #fff;
+      text-align: center;
+    }
+    .product, .payment-method {
+      background: black;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+    .btn {
+      background-color: #25D366;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    .btn:hover {
+      background-color: #1ebe5d;
+    }
     
   </style>
 </head>
-<body>
 
- <header>
+<body>
+  <header>
     <div class="menu-toggle" onclick="toggleMenu()">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <h1>Mini Marketplace</h1>
+    Swiper Fvck
   </header>
 
   <!-- menu overlay -->
   <nav id="nav">
     <div class="close-menu" onclick="toggleMenu()">×</div>
-    <a href="menu.html">Menu Utama</a>
+    <a href="index.html">Produk</a>
     <a href="social.html">Social</a>
-    <a href="produk.html">Produk</a>
   </nav>
-  
+
 <div class="product">
   <h3>Pilih Produk</h3>
   <label><input type="radio" name="product" value="Kaos - Rp100.000"> Kaos - Rp100.000</label>
@@ -171,16 +215,18 @@
     const waLink = `https://wa.me/${phone}?text=${encodedMsg}`;
     window.open(waLink, '_blank');
   }
-</script>
+  
+  <footer>&copy; 2025 Swiper Fvck</footer>
 
-<script>
-function toggleMenu() {
+  <script>
+    function toggleMenu() {
       const nav = document.getElementById('nav');
       const main = document.querySelector('.contact-container');
       const open = nav.style.display !== 'flex';
       nav.style.display = open ? 'flex' : 'none';
       main.classList.toggle('blur', open);
     }
-    </script>
+    
+</script>
 </body>
 </html>
